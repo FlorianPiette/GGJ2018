@@ -1,0 +1,10 @@
+
+Programmation > Intégration > _PROD > _FINAL
+
+Dans Programmation => C'est les scenes des features en cours de travail
+
+Dans Intégration => Les scenes des features finis avec l'intégration en cours
+
+Dans _PROD => Les scènes avec features, graphs et sons que l'on peux tester
+
+Dans _FINAL => Les scènes tester et présentables
