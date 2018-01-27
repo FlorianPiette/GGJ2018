@@ -1,7 +1,11 @@
 fileFormatVersion: 2
-guid: 21557083e78616441b3723fa2807c6e5
+guid: 2c405911d98d8ac44931a85c25bd384b
 folderAsset: yes
+<<<<<<< HEAD
 timeCreated: 1517074653
+=======
+timeCreated: 1517053231
+>>>>>>> Submitting ship to build
 licenseType: Free
 DefaultImporter:
   externalObjects: {}

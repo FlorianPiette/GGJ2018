@@ -15,6 +15,9 @@ public static class Tags {
 	public const string _wall = "Wall";
 	public const string _dino = "Dino";
 
+	public const string _ship= "Ship";
+	public const string _iconeShip= "IconeShip";
+
 	#endregion
 
 	#region Layer
