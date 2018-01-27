@@ -15,26 +15,23 @@ public class DinoChargeTest : MonoBehaviour {
 
 	public float WaitTime;
 
-    [FMODUnity.EventRef]
-    public string dashDino_sfx = "event:/GGJ_2018_DASH_DINO";
-    [FMODUnity.EventRef]
-    public string focusDino_sfx = "event:/GGJ_2018_FOCUS_DINO";
-    [FMODUnity.EventRef]
-    public string prepDashDino_sfx = "event:/GGJ_2018_PREP_DASH_DINO";
-
-    // Use this for initialization
-    void Start () {
+	// Use this for initialization
+	void Start () {
 		Rigid = GetComponent<Rigidbody> ();
-        
-	}
 
+
+
+
+	}
+	
+	
 	// Update is called once per frame
 	void FixedUpdate () {
 		
 		if (ObjectToFollow == null || ObjectToFollow.activeSelf == false)
 			SelectNextTarget ();
 		else {
-			if (!CanCharge) {
+			if (CanCharge == false) {
 				StartCoroutine (TimeToWait ());
 				Rigid.transform.LookAt (ObjectToFollow.transform.position);
 			}
@@ -44,22 +41,35 @@ public class DinoChargeTest : MonoBehaviour {
 	}
 	void OnTriggerEnter (Collider Col){
 
-		if (Col.gameObject.tag.Contains(Tags._player))
+		if (Col.gameObject.tag == "Player") {
+			StartCoroutine (TimeToWait ());
 			ObjectToFollow = Col.gameObject;
-
-		StartCoroutine(TimeToWait());
-
+		}
 	}
 	void OnCollisionEnter (Collision Col){
 		
-		if (Col.gameObject.tag.Contains(Tags._wall))
+		if (Col.gameObject.tag == "Wall") {
+			Rigid.velocity = new Vector3 (0, 0, 0);
 			CanCharge = false;
+		}
+	}
+	void OnCollisionStay (Collision Col){
+
+			if (Col.gameObject.tag == "Wall") {
+			Rigid.velocity = new Vector3 (0, 0, 0);
+			CanCharge = false;
+			}
 	}
 
+
 	void Charge (){
-        
+
+
+
+
 		//Look At Follow Rotate to follow (dont care of rigidbody constraint
-		if (CanCharge == true)
+		if (CanCharge == true  )
+		
 			Rigid.transform.Translate (0, 0, ChargeSpeed * Time.deltaTime);
 
 		Debug.DrawLine (transform.position, ObjectToFollow.transform.position, Color.red);
@@ -89,6 +99,7 @@ public class DinoChargeTest : MonoBehaviour {
 
 				SaveDist = Dist;
 				NearestPlayer = PotentialTarget [i].gameObject;
+				Debug.Log ("NearestP  " + NearestPlayer);
 			}
 			else {
 
