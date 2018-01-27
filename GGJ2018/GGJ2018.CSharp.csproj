@@ -292,12 +292,16 @@
     <Compile Include="Assets\GoogleVR\Scripts\Audio\FmodGvrAudioRoom.cs" />
     <Compile Include="Assets\ResonanceAudio\Scripts\FmodResonanceAudio.cs" />
     <Compile Include="Assets\ResonanceAudio\Scripts\FmodResonanceAudioRoom.cs" />
+    <Compile Include="Assets\Scripts\Collectible.cs" />
+    <Compile Include="Assets\Scripts\CollectibleSpawner.cs" />
     <Compile Include="Assets\Scripts\DinoChargeTest.cs" />
     <Compile Include="Assets\Scripts\Enum.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\MenuScript.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerDeathTest.cs" />
+    <Compile Include="Assets\Scripts\ShipCollectTest.cs" />
+    <Compile Include="Assets\Scripts\shipPiece.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Scripts\Tags.cs" />
   </ItemGroup>
