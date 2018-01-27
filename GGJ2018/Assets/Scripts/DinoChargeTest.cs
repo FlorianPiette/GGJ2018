@@ -19,20 +19,21 @@ public class DinoChargeTest : MonoBehaviour {
 	void Start () {
 		
 		Rigid = GetComponent<Rigidbody> ();
-		//Debug.Log (Rigid.velocity);
+
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		Rigid.velocity = new Vector3 (0, 0, 0);
 		
 		if (ObjectToFollow == null || ObjectToFollow.activeSelf == false)
 			SelectNextTarget ();
 		else {
 			if (CanCharge == false) {
 				StartCoroutine (TimeToWait ());
-				//Debug.Log ("Launch Coroutine");
 				Rigid.transform.LookAt (ObjectToFollow.transform.position);
 			}
+
 			Charge ();
 		}	
 		
