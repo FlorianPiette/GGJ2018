@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-fileFormatVersion: 2
-guid: cf01ad74bd6e5df46996c61b81ba590c
-DefaultImporter:
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-=======
 fileFormatVersion: 2
 guid: cf01ad74bd6e5df46996c61b81ba590c
 PluginImporter:
@@ -36,4 +28,3 @@ PluginImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
->>>>>>> master
