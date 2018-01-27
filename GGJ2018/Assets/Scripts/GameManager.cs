@@ -7,7 +7,8 @@ public class GameManager : Singleton<GameManager> {
 	#region Variables
 	[SerializeField]
 	GameObject playerPrefab;
-	List<PlayerController> _players = new List<PlayerController>();
+	[HideInInspector]
+	public List<PlayerController> _players = new List<PlayerController>();
 	[SerializeField]
 	Transform[] _playerSpawns;
 
@@ -38,7 +39,7 @@ public class GameManager : Singleton<GameManager> {
 	#region Unity_methods
 
 	void Init() {
-		int numberOfPlayers = Input.GetJoystickNames().Length - 1;
+		int numberOfPlayers = Input.GetJoystickNames().Length;
 		Debug.Log("Nombre de Manettes connectés = " + numberOfPlayers);
 
 		for(int i = 0; i < numberOfPlayers; ++i) {
@@ -55,10 +56,6 @@ public class GameManager : Singleton<GameManager> {
 		for(int i = 0; i < _players.Count; ++i) {
 			_players[i]._playerIndex = i + 1;
 		}
-	}
-
-	public void CreateShipPiece() {
-		
 	}
 
 	#endregion
