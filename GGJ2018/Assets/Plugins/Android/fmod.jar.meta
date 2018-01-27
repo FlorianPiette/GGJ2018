@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+fileFormatVersion: 2
+guid: cba124c31f7e10640bc2ff9464f8ac15
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+=======
 fileFormatVersion: 2
 guid: cba124c31f7e10640bc2ff9464f8ac15
 PluginImporter:
@@ -27,3 +35,4 @@ PluginImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+>>>>>>> master
