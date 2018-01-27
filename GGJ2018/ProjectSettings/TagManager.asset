@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Dighole
   - Collectible
+  - Ship
+  - IconeShip
   layers:
   - Default
   - TransparentFX
