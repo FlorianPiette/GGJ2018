@@ -112,12 +112,18 @@ public class PlayerController : MonoBehaviour {
 		// touch Ship
 	}
 
+	void OnCollisionEnter(Collision other) {
+		if(other.gameObject.tag.Contains(Tags._dino)) {
+			GameManager.Instance._players.RemoveAt(_playerIndex);
+			Destroy(this.gameObject);
+		}
+	}
+
 	void OnCollisionStay(Collision other) {
 		if(other.gameObject.tag.Contains(Tags._dighole)) {
 			if(Input.GetButtonDown("J" + _playerIndex + "Bbutton")) {
 				Debug.Log("ENTER DIGHOLE");
 				Destroy(other.gameObject);
-				GameManager.Instance.CreateShipPiece();
 			}
 		}
 	}

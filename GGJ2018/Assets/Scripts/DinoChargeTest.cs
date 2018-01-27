@@ -41,13 +41,15 @@ public class DinoChargeTest : MonoBehaviour {
 	}
 	void OnTriggerEnter (Collider Col){
 
-		if (Col.gameObject.tag == "Player")
+		if (Col.gameObject.tag.Contains(Tags._player))
 			ObjectToFollow = Col.gameObject;
-		
+
+		StartCoroutine(TimeToWait());
+
 	}
 	void OnCollisionEnter (Collision Col){
 		
-		if (Col.gameObject.tag == "Wall")
+		if (Col.gameObject.tag.Contains(Tags._wall))
 			CanCharge = false;
 	}
 
@@ -88,7 +90,6 @@ public class DinoChargeTest : MonoBehaviour {
 
 				SaveDist = Dist;
 				NearestPlayer = PotentialTarget [i].gameObject;
-				Debug.Log ("NearestP  " + NearestPlayer);
 			}
 			else {
 
