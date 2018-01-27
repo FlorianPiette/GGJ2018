@@ -302,6 +302,7 @@
     <Compile Include="Assets\Plugins\FMOD\Wrapper\fmod_studio.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Build\GUIDs.txt" />
     <None Include="Assets\Plugins\FMOD\LICENSE.TXT" />
     <None Include="Assets\_Scenes\Scenes_Notice.txt" />
   </ItemGroup>

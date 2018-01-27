@@ -23,11 +23,14 @@ public class GameManager : Singleton<GameManager> {
 	public float _costStamina = 1.5f;
 	public float _limitToUseStamina = 10f;
 
-	#endregion
+    [FMODUnity.EventRef]
+    public string music = "event:/MUSIQUE";
 
-	#region Unity_methods
+    #endregion
 
-	void OnEnable() {
+    #region Unity_methods
+
+    void OnEnable() {
 		Init();
 	}
 
@@ -56,7 +59,9 @@ public class GameManager : Singleton<GameManager> {
 		for(int i = 0; i < _players.Count; ++i) {
 			_players[i]._playerIndex = i + 1;
 		}
-	}
 
-	#endregion
+        FMODUnity.RuntimeManager.PlayOneShot(music, Vector3.zero);
+    }
+
+    #endregion
 }

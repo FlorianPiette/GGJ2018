@@ -301,6 +301,7 @@
     <Compile Include="Assets\ResonanceAudio\Editor\FmodResonanceAudioRoomEditor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Build\GUIDs.txt" />
     <None Include="Assets\Plugins\FMOD\LICENSE.TXT" />
     <None Include="Assets\_Scenes\Scenes_Notice.txt" />
   </ItemGroup>

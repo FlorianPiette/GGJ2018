@@ -15,16 +15,19 @@ public class DinoChargeTest : MonoBehaviour {
 
 	public float WaitTime;
 
-	// Use this for initialization
-	void Start () {
+    [FMODUnity.EventRef]
+    public string dashDino_sfx = "event:/GGJ_2018_DASH_DINO";
+    [FMODUnity.EventRef]
+    public string focusDino_sfx = "event:/GGJ_2018_FOCUS_DINO";
+    [FMODUnity.EventRef]
+    public string prepDashDino_sfx = "event:/GGJ_2018_PREP_DASH_DINO";
+
+    // Use this for initialization
+    void Start () {
 		Rigid = GetComponent<Rigidbody> ();
-
-
-
-
+        
 	}
-	
-	
+
 	// Update is called once per frame
 	void FixedUpdate () {
 		
@@ -54,13 +57,9 @@ public class DinoChargeTest : MonoBehaviour {
 	}
 
 	void Charge (){
-
-
-
-
+        
 		//Look At Follow Rotate to follow (dont care of rigidbody constraint
-		if (CanCharge == true  )
-		
+		if (CanCharge == true)
 			Rigid.transform.Translate (0, 0, ChargeSpeed * Time.deltaTime);
 
 		Debug.DrawLine (transform.position, ObjectToFollow.transform.position, Color.red);

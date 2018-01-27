@@ -16,6 +16,11 @@ public class MenuScript : MonoBehaviour
     [SerializeField]
     Text StartInText;
 
+    [FMODUnity.EventRef]
+    public string threeTwoOne_sfx = "event:/GGJ_2018_3_2_1";
+    [FMODUnity.EventRef]
+    public string addPlayer_sfx = "event:/GGJ_2018_ADD_PLAYER";
+
     bool PlayerOneIsReady = false;
     bool PlayerTwoIsReady = false;
     bool PlayerThreeIsReady = false;
@@ -32,35 +37,34 @@ public class MenuScript : MonoBehaviour
         {
             PlayerOneIsReady = true;
             PressAToJoinPlayer1.text = "Ready!";
-            nbOfReadyPlayers += 1;
-            print("1");
+            AddingPlayer();
         }
 
         if (Input.GetButtonDown("J2Abutton") && !PlayerTwoIsReady)
         {
             PlayerTwoIsReady = true;
             PressAToJoinPlayer2.text = "Ready!";
-            nbOfReadyPlayers += 1;
+            AddingPlayer();
         }
 
         if (Input.GetButtonDown("J3Abutton") && !PlayerThreeIsReady)
         {
             PlayerThreeIsReady = true;
             PressAToJoinPlayer3.text = "Ready!";
-            nbOfReadyPlayers += 1;
-            print("3");
+            AddingPlayer();
         }
 
         if (Input.GetButtonDown("J4Abutton") && !PlayerFourIsReady)
         {
             PlayerFourIsReady = true;
             PressAToJoinPlayer4.text = "Ready!";
-            nbOfReadyPlayers += 1;
+            AddingPlayer();
         }
 
-        if (Input.GetButtonDown("StartAnyController"))
+        if (Input.GetButtonDown("StartAnyController") && !PressedStart)
         {
             PressedStart = true;
+            FMODUnity.RuntimeManager.PlayOneShot(threeTwoOne_sfx, Vector3.zero);
         }
 
 
@@ -81,10 +85,14 @@ public class MenuScript : MonoBehaviour
         }
 
         if (Countdown < 1)
-            SceneManager.LoadScene("MoveTest");
+            SceneManager.LoadScene("MoveTest");     
 
-        
+    }
 
+    void AddingPlayer ()
+    {
+            nbOfReadyPlayers += 1;
+            FMODUnity.RuntimeManager.PlayOneShot(addPlayer_sfx, Vector3.zero);
     }
 
     /*public void Quit()
