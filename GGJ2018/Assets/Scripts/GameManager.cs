@@ -56,6 +56,10 @@ public class GameManager : Singleton<GameManager> {
 			_players[i]._playerIndex = i + 1;
 		}
 	}
-	
+
+	public void CreateShipPiece() {
+		
+	}
+
 	#endregion
 }

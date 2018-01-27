@@ -11,6 +11,7 @@ public static class Tags {
 	public const string _mainCamera = "MainCamera";
 	public const string _player = "Player";
 	public const string _dighole = "Dighole";
+	public const string _collectible = "Collectible";
 
 	#endregion
 

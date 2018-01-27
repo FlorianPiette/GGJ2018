@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Dighole
+  - Collectible
   layers:
   - Default
   - TransparentFX
