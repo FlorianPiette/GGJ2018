@@ -17,16 +17,14 @@ public class DinoChargeTest : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
 		Rigid = GetComponent<Rigidbody> ();
-
-
-
 
 	}
 	
-	
 	// Update is called once per frame
 	void FixedUpdate () {
+		Rigid.velocity = new Vector3 (0, 0, 0);
 		
 		if (ObjectToFollow == null || ObjectToFollow.activeSelf == false)
 			SelectNextTarget ();
@@ -35,47 +33,56 @@ public class DinoChargeTest : MonoBehaviour {
 				StartCoroutine (TimeToWait ());
 				Rigid.transform.LookAt (ObjectToFollow.transform.position);
 			}
+
 			Charge ();
 		}	
 		
 	}
 	void OnTriggerEnter (Collider Col){
-
-		if (Col.gameObject.tag == "Player") {
+		
+		if (Col.gameObject.tag.Contains(Tags._player)) {
 			StartCoroutine (TimeToWait ());
 			ObjectToFollow = Col.gameObject;
 		}
 	}
 	void OnCollisionEnter (Collision Col){
-		
-		if (Col.gameObject.tag == "Wall") {
+		Debug.Log ("Charging is " + CanCharge);
+
+		if (Col.gameObject.tag.Contains(Tags._wall)) {
+			
+			//Debug.Log ("impact vitesse" + Rigid.velocity);
 			Rigid.velocity = new Vector3 (0, 0, 0);
 			CanCharge = false;
-		}
+		    }
 	}
 	void OnCollisionStay (Collision Col){
 
-			if (Col.gameObject.tag == "Wall") {
+		if (Col.gameObject.tag.Contains(Tags._wall)) {
+			
+			//Debug.Log ("Frottement vitesse" + Rigid.velocity);
 			Rigid.velocity = new Vector3 (0, 0, 0);
 			CanCharge = false;
 			}
 	}
 
-
+#region The Charge
 	void Charge (){
 
 
 
 
 		//Look At Follow Rotate to follow (dont care of rigidbody constraint
-		if (CanCharge == true  )
-		
+		if (CanCharge == true) {
+			
 			Rigid.transform.Translate (0, 0, ChargeSpeed * Time.deltaTime);
 
-		Debug.DrawLine (transform.position, ObjectToFollow.transform.position, Color.red);
-
+		}
+			Debug.DrawLine (transform.position, ObjectToFollow.transform.position, Color.red);
+		
 	}
+#endregion
 
+#region Select Nearest Player
 	void SelectNextTarget(){ //Select the NearestTarget
 		GameObject[] PotentialTarget;
 		float SaveDist = -1.0f;
@@ -99,7 +106,6 @@ public class DinoChargeTest : MonoBehaviour {
 
 				SaveDist = Dist;
 				NearestPlayer = PotentialTarget [i].gameObject;
-				Debug.Log ("NearestP  " + NearestPlayer);
 			}
 			else {
 
@@ -114,13 +120,19 @@ public class DinoChargeTest : MonoBehaviour {
 		}
 		ObjectToFollow = NearestPlayer ;
 	}
+#endregion
+
+#region Coroutine Wait Dino
 	IEnumerator TimeToWait () {
 		float i = 0;
 		while (i < WaitTime) {
+			Rigid.velocity = new Vector3 (0, 0, 0);
 			i+= Time.deltaTime;
 			yield return new  WaitForFixedUpdate ();
 		}
 		CanCharge = true;
 
 	}
+#endregion
+
 }
