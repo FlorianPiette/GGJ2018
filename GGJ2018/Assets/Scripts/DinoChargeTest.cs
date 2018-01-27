@@ -19,21 +19,20 @@ public class DinoChargeTest : MonoBehaviour {
 	void Start () {
 		
 		Rigid = GetComponent<Rigidbody> ();
-
+		//Debug.Log (Rigid.velocity);
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		Rigid.velocity = new Vector3 (0, 0, 0);
 		
 		if (ObjectToFollow == null || ObjectToFollow.activeSelf == false)
 			SelectNextTarget ();
 		else {
 			if (CanCharge == false) {
 				StartCoroutine (TimeToWait ());
+				//Debug.Log ("Launch Coroutine");
 				Rigid.transform.LookAt (ObjectToFollow.transform.position);
 			}
-
 			Charge ();
 		}	
 		
@@ -41,35 +40,30 @@ public class DinoChargeTest : MonoBehaviour {
 	void OnTriggerEnter (Collider Col){
 		
 		if (Col.gameObject.tag.Contains(Tags._player)) {
-			StartCoroutine (TimeToWait ());
+			//StartCoroutine (TimeToWait ());
 			ObjectToFollow = Col.gameObject;
 		}
 	}
 	void OnCollisionEnter (Collision Col){
-		Debug.Log ("Charging is " + CanCharge);
 
 		if (Col.gameObject.tag.Contains(Tags._wall)) {
-			
-			//Debug.Log ("impact vitesse" + Rigid.velocity);
-			Rigid.velocity = new Vector3 (0, 0, 0);
 			CanCharge = false;
+			Rigid.velocity = new Vector3 (0, 0, 0);
+			//Debug.Log (Rigid.velocity);
 		    }
+
 	}
 	void OnCollisionStay (Collision Col){
 
 		if (Col.gameObject.tag.Contains(Tags._wall)) {
-			
-			//Debug.Log ("Frottement vitesse" + Rigid.velocity);
-			Rigid.velocity = new Vector3 (0, 0, 0);
 			CanCharge = false;
+			Rigid.velocity = new Vector3 (0, 0, 0);
 			}
 	}
 
 #region The Charge
 	void Charge (){
-
-
-
+		Debug.Log ("Charging is " + CanCharge);
 
 		//Look At Follow Rotate to follow (dont care of rigidbody constraint
 		if (CanCharge == true) {
@@ -77,8 +71,7 @@ public class DinoChargeTest : MonoBehaviour {
 			Rigid.transform.Translate (0, 0, ChargeSpeed * Time.deltaTime);
 
 		}
-			Debug.DrawLine (transform.position, ObjectToFollow.transform.position, Color.red);
-		
+			Debug.DrawLine (transform.position, ObjectToFollow.transform.position, Color.red);		
 	}
 #endregion
 
@@ -126,10 +119,13 @@ public class DinoChargeTest : MonoBehaviour {
 	IEnumerator TimeToWait () {
 		float i = 0;
 		while (i < WaitTime) {
-			Rigid.velocity = new Vector3 (0, 0, 0);
-			i+= Time.deltaTime;
-			yield return new  WaitForFixedUpdate ();
+
+			i++;
+			//i+= Time.deltaTime;
+			//yield return new  WaitForFixedUpdate ();
+			yield return new WaitForSeconds (1.0f);
 		}
+		//Debug.Log ("DONE WAIT");
 		CanCharge = true;
 
 	}
