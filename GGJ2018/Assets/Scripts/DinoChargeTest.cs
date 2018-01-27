@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class DinoChargeTest : MonoBehaviour {
 
-	public Rigidbody Rigid;
+    [FMODUnity.EventRef]
+    private string focusDino_sfx = "event:/GGJ_2018_FOCUS_DINO";
+    [FMODUnity.EventRef]
+    private string dashDino = "event:/GGJ_2018_DASH_DINO";
+    [FMODUnity.EventRef]
+    private string prepDashDino = "event:/GGJ_2018_PREP_DASH_DINO";
+
+    public Rigidbody Rigid;
 	public GameObject ObjectToFollow;
 	[Range (0, 10.0f)]
 	public float FollowSpeed;
@@ -14,9 +21,11 @@ public class DinoChargeTest : MonoBehaviour {
 	bool CanCharge = false;
 
 	public float WaitTime;
+    private bool canPlayDashSound = true;
+    private bool isPreparingCharge = false;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 		Rigid = GetComponent<Rigidbody> ();
 
@@ -29,9 +38,10 @@ public class DinoChargeTest : MonoBehaviour {
 		if (ObjectToFollow == null || ObjectToFollow.activeSelf == false)
 			SelectNextTarget ();
 		else {
-			if (CanCharge == false) {
+			if (!CanCharge && !isPreparingCharge) {
 				StartCoroutine (TimeToWait ());
-				Rigid.transform.LookAt (ObjectToFollow.transform.position);
+                isPreparingCharge = true;
+                Rigid.transform.LookAt (ObjectToFollow.transform.position);
 			}
 
 			Charge ();
@@ -43,15 +53,20 @@ public class DinoChargeTest : MonoBehaviour {
 		if (Col.gameObject.tag == (Tags._player)) {
 			//StartCoroutine (TimeToWait ());
 			ObjectToFollow = Col.gameObject;
-		}
-	}
+
+            FMODUnity.RuntimeManager.PlayOneShot(focusDino_sfx, Vector3.zero);
+
+        }
+    }
 	void OnCollisionEnter (Collision Col){
 
 		if (Col.gameObject.tag == (Tags._wall)) {
 			CanCharge = false;
 			Rigid.velocity = new Vector3 (0, 0, 0);
-			//Debug.Log (Rigid.velocity);
-		    }
+
+            canPlayDashSound = true;
+            //Debug.Log (Rigid.velocity);
+        }
 
 	}
 	void OnCollisionStay (Collision Col){
@@ -65,8 +80,15 @@ public class DinoChargeTest : MonoBehaviour {
 #region The Charge
 	void Charge (){
 
-		//Look At Follow Rotate to follow (dont care of rigidbody constraint
-		if (CanCharge == true) {
+        if (canPlayDashSound == true)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(dashDino, Vector3.zero);
+            canPlayDashSound = false;
+            Debug.Log("Test");
+        }
+
+        //Look At Follow Rotate to follow (dont care of rigidbody constraint
+        if (CanCharge == true) {
 			
 			Rigid.transform.Translate (0, 0, ChargeSpeed * Time.deltaTime);
 
@@ -117,18 +139,25 @@ public class DinoChargeTest : MonoBehaviour {
 
 #region Coroutine Wait Dino
 	IEnumerator TimeToWait () {
-		float i = 0;
-		while (i < WaitTime) {
+        
+        float i = 0;
+        //Wait the whole time minus 1, because he'll cry 1s before dashing 
+		while (i < WaitTime -1) {
 
 			i++;
 			//i+= Time.deltaTime;
 			//yield return new  WaitForFixedUpdate ();
 			yield return new WaitForSeconds (1.0f);
 		}
-		//Debug.Log ("DONE WAIT");
-		CanCharge = true;
 
-	}
+        //cry then wait one last sec
+        FMODUnity.RuntimeManager.PlayOneShot(prepDashDino, Vector3.zero);
+        yield return new WaitForSeconds(1.0f);
+
+        CanCharge = true;
+        isPreparingCharge = false;
+
+    }
 #endregion
 
 }
