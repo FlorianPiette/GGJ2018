@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: "C:\\Users\\Quentin\\Desktop\\ISART\\Projets\\\xB2WIP\\GGJ_2018\\GGJ_2018_FMOD\\GGJ_2018_FMOD.fspro"
-  SourceProjectPathUnformatted: "C:\\Users\\Quentin\\Desktop\\ISART\\Projets\\\xB2WIP\\GGJ_2018\\GGJ_2018_FMOD\\GGJ_2018_FMOD.fspro"
-  SourceBankPathUnformatted: "C:\\Users\\Quentin\\Desktop\\ISART\\Projets\\\xB2WIP\\GGJ_2018\\GGJ_2018_FMOD\\Build"
+  sourceProjectPath: 
+  SourceProjectPathUnformatted: 
+  SourceBankPathUnformatted: 
   AutomaticEventLoading: 1
   AutomaticSampleLoading: 0
   ImportType: 0
@@ -41,9 +41,7 @@ MonoBehaviour:
     Value: 1
   - Platform: 2
     Value: 0
-  BankDirectorySettings:
-  - Platform: 2
-    Value: Desktop
+  BankDirectorySettings: []
   VirtualChannelSettings:
   - Platform: 1
     Value: 1024

@@ -113,9 +113,13 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision other) {
+		if(other.gameObject.tag.Contains(Tags._wall)) {
+			transform.position = transform.position;
+		}
+
 		if(other.gameObject.tag.Contains(Tags._dino)) {
+			gameObject.SetActive(false);
 			GameManager.Instance._players.RemoveAt(_playerIndex);
-			Destroy(this.gameObject);
 		}
 	}
 
