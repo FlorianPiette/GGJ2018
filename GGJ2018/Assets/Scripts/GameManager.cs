@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager> {
 
@@ -36,11 +38,13 @@ public class GameManager : Singleton<GameManager> {
 	bool _createCollectible;
 	bool _createShipPieces;
 
-	#endregion
+	public GameObject _shipPieces;
+    List<GameObject> _shipPiecesList = new List<GameObject>();
+    #endregion
 
-	#region Unity_methods
+    #region Unity_methods
 
-	void OnEnable() {
+    void OnEnable() {
 		Init();
 	}
 
@@ -58,6 +62,8 @@ public class GameManager : Singleton<GameManager> {
 
 	void Init() {
         FMODUnity.RuntimeManager.PlayOneShot(music, Vector3.zero);
+
+        FindShipPieces();
 
         int numberOfPlayers = Input.GetJoystickNames().Length;
 		Debug.Log("Nombre de Manettes connectés = " + numberOfPlayers);
@@ -82,8 +88,18 @@ public class GameManager : Singleton<GameManager> {
 
 	}
 
+    public void FindShipPieces()
+    {
+        GameObject[] temp = GameObject.FindGameObjectsWithTag("IconeShip");
+        for (int i = 0; i < temp.Length; ++i)
+        {
+            _shipPiecesList.Add(temp[i]);
+            temp[i].SetActive(false);
 
-	public void CreateShipPiece() {
+        }
+    }
+
+    public void GenerateShipPiece() {
 		if (_createShipPieces){
 			for(int i = 0; i < 4; ++i) {
 
@@ -91,15 +107,26 @@ public class GameManager : Singleton<GameManager> {
 				newShipPiece.transform.parent = null;
 			}
 		}
-
 	}
+
+    public void AddShipPiece()
+    {
+        int random = UnityEngine.Random.Range(0, _shipPiecesList.Count);
+        _shipPiecesList[random].SetActive(true);
+        _shipPiecesList.RemoveAt(random);
+
+        if (_shipPiecesList.Count == 0)
+        {
+            SceneManager.LoadScene("Win");
+        }
+    }
 
 	IEnumerator DelayCreateShipPieces (){
 
 			_createShipPieces = false;
 		yield return new WaitForSeconds (16f);
 		_createShipPieces = true;
-		CreateShipPiece ();
+		GenerateShipPiece ();
 		StartCoroutine (DelayCreateShipPieces());
 	}
 

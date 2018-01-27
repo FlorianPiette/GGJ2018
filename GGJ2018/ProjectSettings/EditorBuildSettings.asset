@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Programmation/MoveTest.unity
     guid: 9299bf1086054064b9c75d534e786265
+  - enabled: 1
+    path: Assets/_Scenes/Programmation/Win.unity
+    guid: 35975dd12e120e945b8b3ff011bb49fe

@@ -8,6 +8,9 @@ TagManager:
   - Collectible
   - Ship
   - IconeShip
+  - Wall
+  - Dino
+  - ShipPiece
   layers:
   - Default
   - TransparentFX

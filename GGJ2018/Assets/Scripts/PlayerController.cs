@@ -22,8 +22,6 @@ public class PlayerController : MonoBehaviour {
 	float _stamina;
 	float _shipPiecesNumber;
 
-	public GameObject _shipPieces;
-	List<GameObject> _shipPiecesList = new List<GameObject>();
 	#endregion
 
 	#region Unity_methods
@@ -41,14 +39,7 @@ public class PlayerController : MonoBehaviour {
 		_canMove = _allowedMovement;
 		_speedMove = GameManager.Instance._startMoveSpeed;
 		_stamina = GameManager.Instance._startStamina;
-		GameObject[] temp = GameObject.FindGameObjectsWithTag ("IconeShip");
-			for (int i = 0; i < temp.Length; ++i) {
-				_shipPiecesList.Add(temp[i]);
-			temp[i].SetActive (false);
-
-				}
-		
-
+      
 	}
 
 	void FixedUpdate() {
@@ -120,47 +111,43 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if(other.tag.Contains(Tags._collectible)) {
+		if(other.tag == (Tags._collectible)) {
 		//met un int en plus
 			_stamina += 10;
 			Destroy(other.gameObject);
 		}
 
 		// touch Ship pieces
-		if(other.tag.Contains(Tags._ship)) {
+		if(other.tag == (Tags._shipPiece)) {
 			_shipPiecesNumber += 1;
 			Destroy(other.gameObject);
-		}
+        }
 
-		if(other.name.Contains("detection")) {
+        Debug.Log(name + "  + " + other.name);
+
+        if (other.tag == (Tags._ship)) {
 			if (_shipPiecesNumber !=0){
 				_shipPiecesNumber -= 1;
-			int random = Random.Range (0, _shipPiecesList.Count);
-//				for (int i = 0; i < _shipPiecesList.Count; ++i) {
-			_shipPiecesList[random].SetActive (true);
-			_shipPiecesList.RemoveAt (random);
-			//}
 
-				if(_shipPiecesList.Count ==0){
-						SceneManager.LoadScene ("Win");
-				}
+                Debug.Log("TADADADA" + name + "  + " + other.name);
+                GameManager.Instance.AddShipPiece();
 		    }
 		}
 	}
 
 	void OnCollisionEnter(Collision other) {
-		if(other.gameObject.tag.Contains(Tags._wall)) {
+		if(other.gameObject.tag == (Tags._wall)) {
 			transform.position = transform.position;
 		}
 
-		if(other.gameObject.tag.Contains(Tags._dino)) {
+		if(other.gameObject.tag == (Tags._dino)) {
 			gameObject.SetActive(false);
 			GameManager.Instance._players.RemoveAt(_playerIndex - 1);
 		}
 	}
 
 	void OnCollisionStay(Collision other) {
-		if(other.gameObject.tag.Contains(Tags._dighole)) {
+		if(other.gameObject.tag == (Tags._dighole)) {
 			if(Input.GetButtonDown("J" + _playerIndex + "Bbutton")) {
 				Destroy(other.gameObject);
 			}

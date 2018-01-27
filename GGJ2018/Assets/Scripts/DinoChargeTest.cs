@@ -40,14 +40,14 @@ public class DinoChargeTest : MonoBehaviour {
 	}
 	void OnTriggerEnter (Collider Col){
 		
-		if (Col.gameObject.tag.Contains(Tags._player)) {
+		if (Col.gameObject.tag == (Tags._player)) {
 			//StartCoroutine (TimeToWait ());
 			ObjectToFollow = Col.gameObject;
 		}
 	}
 	void OnCollisionEnter (Collision Col){
 
-		if (Col.gameObject.tag.Contains(Tags._wall)) {
+		if (Col.gameObject.tag == (Tags._wall)) {
 			CanCharge = false;
 			Rigid.velocity = new Vector3 (0, 0, 0);
 			//Debug.Log (Rigid.velocity);
@@ -56,7 +56,7 @@ public class DinoChargeTest : MonoBehaviour {
 	}
 	void OnCollisionStay (Collision Col){
 
-		if (Col.gameObject.tag.Contains(Tags._wall)) {
+		if (Col.gameObject.tag == (Tags._wall)) {
 			CanCharge = false;
 			Rigid.velocity = new Vector3 (0, 0, 0);
 			}
