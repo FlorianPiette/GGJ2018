@@ -104,5 +104,14 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionStay(Collision other) {
+		if(other.gameObject.tag.Contains(Tags._dighole)) {
+			if(Input.GetButtonDown("J" + _playerIndex + "Bbutton")) {
+				Debug.Log("ENTER DIGHOLE");
+				Destroy(other.gameObject);
+			}
+		}
+	}
+
 	#endregion
 }

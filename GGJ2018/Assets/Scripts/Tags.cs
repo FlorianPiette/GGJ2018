@@ -10,12 +10,13 @@ public static class Tags {
 	public const string _gameManager = "GameManager";
 	public const string _mainCamera = "MainCamera";
 	public const string _player = "Player";
+	public const string _dighole = "Dighole";
 
 	#endregion
 
 	#region Layer
 
-//	public const int c_layout_plane = 9;
+	//	public const int c_layout_plane = 9;
 
 	#endregion
 
