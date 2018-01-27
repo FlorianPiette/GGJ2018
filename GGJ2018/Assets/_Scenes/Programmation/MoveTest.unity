@@ -758,6 +758,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -128.2
       objectReference: {fileID: 0}
+    - target: {fileID: 137248085504025468, guid: 11f9c06824bbd4b42bb292d3b93214e3,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a23eaea38a5336e40a4625c8c82f4780, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11f9c06824bbd4b42bb292d3b93214e3, type: 2}
   m_IsPrefabParent: 0
@@ -923,12 +928,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1216920558361804, guid: 4882f66809e07fb4da7f5d2868b02aba,
     type: 2}
+  collectiblePrefab: {fileID: 0}
+  shipPiecePrefab: {fileID: 0}
   _players: []
+  music: event:/MUSIQUE
   _playerSpawns:
   - {fileID: 1982962397}
   - {fileID: 710672931}
   - {fileID: 1651470660}
   - {fileID: 1221047162}
+  _collectibleSpawns: []
+  _ShipPieceSpawns: []
   _startMoveSpeed: 1.9
   _sprintSpeed: 2
   _boostSpeed: 5
