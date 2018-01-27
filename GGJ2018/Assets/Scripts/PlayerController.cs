@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -19,6 +20,10 @@ public class PlayerController : MonoBehaviour {
 	float _boostSpeed;
 
 	float _stamina;
+	float _shipPiecesNumber;
+
+	public GameObject _shipPieces;
+	List<GameObject> _shipPiecesList = new List<GameObject>();
 	#endregion
 
 	#region Unity_methods
@@ -36,6 +41,14 @@ public class PlayerController : MonoBehaviour {
 		_canMove = _allowedMovement;
 		_speedMove = GameManager.Instance._startMoveSpeed;
 		_stamina = GameManager.Instance._startStamina;
+		GameObject[] temp = GameObject.FindGameObjectsWithTag ("IconeShip");
+			for (int i = 0; i < temp.Length; ++i) {
+				_shipPiecesList.Add(temp[i]);
+			temp[i].SetActive (false);
+
+				}
+		
+
 	}
 
 	void FixedUpdate() {
@@ -108,10 +121,31 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if(other.tag.Contains(Tags._collectible)) {
+		//met un int en plus
+			_stamina += 10;
 			Destroy(other.gameObject);
 		}
 
-		// touch Ship
+		// touch Ship pieces
+		if(other.tag.Contains(Tags._ship)) {
+			_shipPiecesNumber += 1;
+			Destroy(other.gameObject);
+		}
+
+		if(other.name.Contains("detection")) {
+			if (_shipPiecesNumber !=0){
+				_shipPiecesNumber -= 1;
+			int random = Random.Range (0, _shipPiecesList.Count);
+//				for (int i = 0; i < _shipPiecesList.Count; ++i) {
+			_shipPiecesList[random].SetActive (true);
+			_shipPiecesList.RemoveAt (random);
+			//}
+
+				if(_shipPiecesList.Count ==0){
+						SceneManager.LoadScene ("Win");
+				}
+		    }
+		}
 	}
 
 	void OnCollisionEnter(Collision other) {

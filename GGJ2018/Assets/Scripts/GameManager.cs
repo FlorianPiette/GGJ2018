@@ -7,10 +7,18 @@ public class GameManager : Singleton<GameManager> {
 	#region Variables
 	[SerializeField]
 	GameObject playerPrefab;
-	[HideInInspector]
-	public List<PlayerController> _players = new List<PlayerController>();
-	[SerializeField]
-	Transform[] _playerSpawns;
+    public GameObject collectiblePrefab;
+	public GameObject shipPiecePrefab;
+    public List<PlayerController> _players = new List<PlayerController>();
+
+    [FMODUnity.EventRef]
+    public string music = "event:/MUSIQUE";
+
+
+    [SerializeField]
+	public Transform[] _playerSpawns;
+	public Transform[] _collectibleSpawns;
+	public Transform[] _ShipPieceSpawns;
 
 	public float _startMoveSpeed = 1.9f;
 
@@ -25,6 +33,9 @@ public class GameManager : Singleton<GameManager> {
 	public float _costStamina = 1.5f;
 	public float _limitToUseStamina = 10f;
 
+	bool _createCollectible;
+	bool _createShipPieces;
+
 	#endregion
 
 	#region Unity_methods
@@ -33,15 +44,22 @@ public class GameManager : Singleton<GameManager> {
 		Init();
 	}
 
-	void Update() {
-	}
+//	void Update (){
+//
+//		if (_createShipPieces==false){
+//		StartCoroutine (DelayCreateShipPieces());
+//		}
+//	}
+
 
 	#endregion
 
 	#region Unity_methods
 
 	void Init() {
-		int numberOfPlayers = Input.GetJoystickNames().Length;
+        FMODUnity.RuntimeManager.PlayOneShot(music, Vector3.zero);
+
+        int numberOfPlayers = Input.GetJoystickNames().Length;
 		Debug.Log("Nombre de Manettes connectés = " + numberOfPlayers);
 
 		for(int i = 0; i < numberOfPlayers; ++i) {
@@ -59,7 +77,33 @@ public class GameManager : Singleton<GameManager> {
 			_players[i]._playerIndex = i + 1;
 			_players[i].name = "NukeMan_J" + _players[i]._playerIndex;
 		}
+
+		StartCoroutine (DelayCreateShipPieces());
+
 	}
+
+
+	public void CreateShipPiece() {
+		if (_createShipPieces){
+			for(int i = 0; i < 4; ++i) {
+
+				GameObject newShipPiece = Instantiate(shipPiecePrefab, _ShipPieceSpawns[i]);
+				newShipPiece.transform.parent = null;
+			}
+		}
+
+	}
+
+	IEnumerator DelayCreateShipPieces (){
+
+			_createShipPieces = false;
+		yield return new WaitForSeconds (16f);
+		_createShipPieces = true;
+		CreateShipPiece ();
+		StartCoroutine (DelayCreateShipPieces());
+	}
+
+
 
 	#endregion
 }
