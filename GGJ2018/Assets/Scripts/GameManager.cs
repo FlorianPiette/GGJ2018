@@ -16,6 +16,8 @@ public class GameManager : Singleton<GameManager> {
 
 	public float _sprintSpeed = 2f;
 
+	public float _boostSpeed = 5f;
+
 	public float _startStamina = 30f;
 	public float _minStamina = 0f;
 	public float _maxStamina = 100f;
@@ -55,6 +57,7 @@ public class GameManager : Singleton<GameManager> {
 
 		for(int i = 0; i < _players.Count; ++i) {
 			_players[i]._playerIndex = i + 1;
+			_players[i].name = "NukeMan_J" + _players[i]._playerIndex;
 		}
 	}
 

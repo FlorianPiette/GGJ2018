@@ -76,6 +76,8 @@ public class PlayerController : MonoBehaviour {
 					_stamina -= GameManager.Instance._costStamina;
 					_sprintSpeed = GameManager.Instance._sprintSpeed;
 				}
+			} else if(Input.GetButton("J" + _playerIndex + "RBbutton")) {
+				//StartCoroutine(ActivateBoost());
 			}
 
 			transform.position = transform.position + (_velocity * (_speedMove + _sprintSpeed + _boostSpeed)) * Time.deltaTime;
@@ -119,14 +121,13 @@ public class PlayerController : MonoBehaviour {
 
 		if(other.gameObject.tag.Contains(Tags._dino)) {
 			gameObject.SetActive(false);
-			GameManager.Instance._players.RemoveAt(_playerIndex);
+			GameManager.Instance._players.RemoveAt(_playerIndex - 1);
 		}
 	}
 
 	void OnCollisionStay(Collision other) {
 		if(other.gameObject.tag.Contains(Tags._dighole)) {
 			if(Input.GetButtonDown("J" + _playerIndex + "Bbutton")) {
-				Debug.Log("ENTER DIGHOLE");
 				Destroy(other.gameObject);
 			}
 		}
