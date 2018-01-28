@@ -48,12 +48,12 @@ public class GameManager : Singleton<GameManager> {
 		Init();
 	}
 
-//	void Update (){
-//
-//		if (_createShipPieces==false){
-//		StartCoroutine (DelayCreateShipPieces());
-//		}
-//	}
+	//void Update() {
+
+	//	if(_createShipPieces == false) {
+	//		StartCoroutine(DelayCreateShipPieces());
+	//	}
+	//}
 
 
 	#endregion
@@ -130,7 +130,19 @@ public class GameManager : Singleton<GameManager> {
 		StartCoroutine (DelayCreateShipPieces());
 	}
 
+	public void EndOfGame() {
+		StartCoroutine(EndCoroutine());
+	}
 
+	public IEnumerator EndCoroutine() {
+		yield return new WaitForSeconds(1.5f);
+
+		if(_players.Count == 0) {
+			SceneManager.LoadScene("Win");
+		}
+
+		StopCoroutine("EndOfGame");
+	}
 
 	#endregion
 }

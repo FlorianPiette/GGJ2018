@@ -11,6 +11,7 @@ public class DinoChargeTest : MonoBehaviour {
     [FMODUnity.EventRef]
     private string prepDashDino = "event:/GGJ_2018_PREP_DASH_DINO";
 
+	Animator anim;
     public Rigidbody Rigid;
 	public GameObject ObjectToFollow;
 	[Range (0, 50.0f)]
@@ -28,6 +29,7 @@ public class DinoChargeTest : MonoBehaviour {
     void Start () {
 		
 		Rigid = GetComponent<Rigidbody> ();
+		anim = GetComponent<Animator>();
 
 	}
 	
@@ -69,8 +71,9 @@ public class DinoChargeTest : MonoBehaviour {
 			Rigid.velocity = new Vector3 (0, 0, 0);
 
             canPlayDashSound = true;
-            //Debug.Log (Rigid.velocity);
-        }
+			anim.SetBool("Charging", false);
+			//Debug.Log (Rigid.velocity);
+		}
 
 	}
 	void OnCollisionStay (Collision Col){
@@ -89,12 +92,14 @@ public class DinoChargeTest : MonoBehaviour {
             FMODUnity.RuntimeManager.PlayOneShot(dashDino, Vector3.zero);
             canPlayDashSound = false;
 
-        }
+		}
 
-        //Look At Follow Rotate to follow (dont care of rigidbody constraint
-        if (CanCharge == true) {
+
+		//Look At Follow Rotate to follow (dont care of rigidbody constraint
+		if (CanCharge == true) {
 			
 			Rigid.transform.Translate (0, 0, ChargeSpeed * Time.deltaTime);
+			anim.SetBool("Charging", true);
 
 		}
 			Debug.DrawLine (transform.position, ObjectToFollow.transform.position, Color.red);		
@@ -143,8 +148,9 @@ public class DinoChargeTest : MonoBehaviour {
 
 #region Coroutine Wait Dino
 	IEnumerator TimeToWait () {
-        
-        float i = 0;
+
+		anim.SetBool("Wait", true);
+		float i = 0;
         //Wait the whole time minus 1, because he'll cry 1s before dashing 
 		while (i < WaitTime -1) {
 
@@ -156,12 +162,22 @@ public class DinoChargeTest : MonoBehaviour {
 
         //cry then wait one last sec
         FMODUnity.RuntimeManager.PlayOneShot(prepDashDino, Vector3.zero);
-        yield return new WaitForSeconds(1.0f);
+		anim.SetTrigger("Roar");
+        yield return new WaitForSeconds(2.0f);
 
         CanCharge = true;
         isPreparingCharge = false;
 
     }
-#endregion
+	#endregion
+
+	#region Animation Kill
+
+	public void PlayerKill() {
+
+		anim.SetTrigger("Kill");
+	}
+
+	#endregion
 
 }

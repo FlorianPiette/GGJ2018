@@ -91,21 +91,14 @@ public class PlayerController : MonoBehaviour {
 				transform.rotation = Quaternion.LookRotation(_velocity);
 			}
 
-			if(_sprintSpeed != 0) {
-				_animator.SetBool("Boost", false);
-				_animator.SetBool("Sprint", true);
-				_animator.SetBool("Run", false);
-			} else if(_boostSpeed != 0) {
-				_animator.SetBool("Boost", true);
-				_animator.SetBool("Sprint", false);
-				_animator.SetBool("Run", false);
-			} else if(_velocity == Vector3.zero) {
-				_animator.SetBool("Boost", false);
-				_animator.SetBool("Sprint", false);
+			//if(_sprintSpeed != 0) {
+			//	_animator.SetBool("Run", false);
+			//} else if(_boostSpeed != 0) {
+			//	_animator.SetBool("Run", false);
+			//} else 
+			if(_velocity == Vector3.zero) {
 				_animator.SetBool("Run", false);
 			} else {
-				_animator.SetBool("Boost", false);
-				_animator.SetBool("Sprint", false);
 				_animator.SetBool("Run", true);
 			}
 
@@ -140,8 +133,9 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if(other.gameObject.tag == (Tags._dino)) {
-			gameObject.SetActive(false);
+			GameManager.Instance.EndOfGame();
 			GameManager.Instance._players.RemoveAt(_playerIndex - 1);
+			gameObject.SetActive(false);
 		}
 	}
 
