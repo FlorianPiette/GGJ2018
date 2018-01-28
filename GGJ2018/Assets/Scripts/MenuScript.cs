@@ -5,13 +5,13 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
     [SerializeField]
-    Text PressAToJoinPlayer1;
+    Transform PressAToJoinPlayer1;
     [SerializeField]
-    Text PressAToJoinPlayer2;
+	Transform PressAToJoinPlayer2;
     [SerializeField]
-    Text PressAToJoinPlayer3;
+	Transform PressAToJoinPlayer3;
     [SerializeField]
-    Text PressAToJoinPlayer4;
+	Transform PressAToJoinPlayer4;
     
     [SerializeField]
     Text StartInText;
@@ -40,7 +40,8 @@ public class MenuScript : MonoBehaviour
         if (Input.GetButtonDown("J1Abutton") && !PlayerOneIsReady)
         {
             PlayerOneIsReady = true;
-            PressAToJoinPlayer1.text = "Ready!";
+			PressAToJoinPlayer1.GetChild(0).gameObject.SetActive(true);
+			PressAToJoinPlayer1.GetChild(1).GetComponent<Text>().text = "Ready!";
             AddingPlayer();
 			FMODUnity.RuntimeManager.PlayOneShot(addPlayer_sfx, Vector3.zero);
         }
@@ -48,7 +49,8 @@ public class MenuScript : MonoBehaviour
         if (Input.GetButtonDown("J2Abutton") && !PlayerTwoIsReady)
         {
             PlayerTwoIsReady = true;
-            PressAToJoinPlayer2.text = "Ready!";
+			PressAToJoinPlayer2.GetChild(0).gameObject.SetActive(true);
+			PressAToJoinPlayer2.GetChild(1).GetComponent<Text>().text = "Ready!";
             AddingPlayer();
 			FMODUnity.RuntimeManager.PlayOneShot(addPlayer_sfx, Vector3.zero);
         }
@@ -56,7 +58,8 @@ public class MenuScript : MonoBehaviour
         if (Input.GetButtonDown("J3Abutton") && !PlayerThreeIsReady)
         {
             PlayerThreeIsReady = true;
-            PressAToJoinPlayer3.text = "Ready!";
+			PressAToJoinPlayer3.GetChild(0).gameObject.SetActive(true);
+			PressAToJoinPlayer3.GetChild(1).GetComponent<Text>().text = "Ready!";
             AddingPlayer();
 			FMODUnity.RuntimeManager.PlayOneShot(addPlayer_sfx, Vector3.zero);
         }
@@ -64,7 +67,8 @@ public class MenuScript : MonoBehaviour
         if (Input.GetButtonDown("J4Abutton") && !PlayerFourIsReady)
         {
             PlayerFourIsReady = true;
-            PressAToJoinPlayer4.text = "Ready!";
+			PressAToJoinPlayer4.GetChild(0).gameObject.SetActive(true);
+			PressAToJoinPlayer4.GetChild(1).GetComponent<Text>().text = "Ready!";
             AddingPlayer();
 			FMODUnity.RuntimeManager.PlayOneShot(addPlayer_sfx, Vector3.zero);
         }
