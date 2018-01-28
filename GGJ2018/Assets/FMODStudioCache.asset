@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114933740458789432}
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   EditorEvents:
   - {fileID: 114939013354145120}
   - {fileID: 114032305455104894}
@@ -37,9 +37,9 @@ MonoBehaviour:
   - {fileID: 114235324490777574}
   - {fileID: 114111020495485652}
   - {fileID: 114036765357039868}
-  MasterBankRef: {fileID: 114854690156325294}
+  MasterBankRef: {fileID: 114872397982948516}
   StringsBankRef: {fileID: 114933740458789432}
-  stringsBankWriteTime: 636526983269042586
+  stringsBankWriteTime: 636527172802245361
   cacheVersion: 2
 --- !u!114 &114025988092304298
 MonoBehaviour:
@@ -70,7 +70,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_DASH_DINO
   guid: 0ad1167ba9c2494fa7b4a801544ec198
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -107,7 +107,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_IMPACT_DASH_DINO
   guid: 7942eb04baca6546b7d7460aca5b42a7
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -129,7 +129,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_RUN_DINO_LEFT
   guid: 837199bee16dcd42bfd804fe0baf77d9
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -151,7 +151,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_MOVE_PLAYER_01
   guid: 0d82f930804fcf4aa674f584cb0d426b
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -173,12 +173,12 @@ MonoBehaviour:
   Path: event:/MUSIQUE
   guid: df98f43c85e6e346819b6f7682a22adf
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114191333568891026}
+  - {fileID: 114408091598483030}
   MinDistance: 0
   MaxDistance: 0
   Length: 28444
@@ -214,7 +214,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_RUN_DINO_RIGHT
   guid: 918e6b997ca7854d833241b4fd6e7c2d
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -222,21 +222,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
---- !u!114 &114191333568891026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: PHASE
-  Min: 0
-  Max: 4
-  Default: 0
 --- !u!114 &114233525056317534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +236,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_DIG_PIECE
   guid: 18350b7b6d4e2d40b1df81935129f64d
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -273,7 +258,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_LEAVE_PLAYER
   guid: c498d25b12a2a0468ed043917255a302
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -295,7 +280,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_START
   guid: 24c600a2f4fdf941ac4c4ee418c84cf9
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -317,7 +302,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_PREP_DASH_DINO
   guid: 76cb304ec171f942a136d7ce46530303
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -339,7 +324,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_3_2_1
   guid: 4b7881f20fb4a84c81afe55932f300a6
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -347,6 +332,40 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &114383039003784246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "C:\\Users\\Quentin\\Desktop\\ISART\\Projets\\\xB2WIP\\GGJ_2018\\GGJ2018\\GGJ2018\\Assets\\Build\\Desktop\\Master
+    Bank.bank"
+  lastModified: 636526956068141686
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 17039968
+  Exists: 1
+--- !u!114 &114408091598483030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: PHASE
+  Min: 0
+  Max: 4
+  Default: 0
 --- !u!114 &114417372563544930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,7 +380,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_MOVE_PLAYER_02
   guid: 510e66b64765a7429d54417902aae6c9
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -411,6 +430,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &114532614253827448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: PHASE
+  Min: 0
+  Max: 4
+  Default: 0
 --- !u!114 &114541615103040728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,7 +493,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_MOVE_PLAYER_03
   guid: c1573f307012e44ebb81f7666274b282
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -481,7 +515,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_DASH_PLAYER
   guid: 71d876ba10090a4d9878687b2bc1a43f
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -503,7 +537,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_DEFEAT
   guid: 1da6e629c49eae45b5c9260dd1d244cd
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -525,7 +559,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_CONSTRUCT_SPACESHIP
   guid: a7f0a48fcc8f2a4c9b2374b904c325c4
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -547,7 +581,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_ADD_PLAYER
   guid: 173947fde14e8a41a18e3b47960ac9d7
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -584,7 +618,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_VICTORY
   guid: 156bfe54f12667429519609ca927a2c9
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -606,7 +640,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_MOVE_PLAYER_04
   guid: 8ca3647990ca4248a640e903e6b93d2b
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -614,7 +648,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
---- !u!114 &114854690156325294
+--- !u!114 &114872397982948516
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -625,8 +659,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: C:\Users\Titi\Desktop\GGJ2018\Git\GGJ2018\Assets\Build\Desktop\Master Bank.bank
-  lastModified: 636526983269022572
+  Path: C:\Users\Florian\Desktop\GGJ2018_2\GGJ2018\Assets\Build\Desktop\Master Bank.bank
+  lastModified: 636527172802225360
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -665,7 +699,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_INTERACTION_TELEPORT
   guid: 81e18db08848ea4c9eb7cddc58fa9618
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -685,7 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636526983269042586
+  lastModified: 636527172802245361
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -705,7 +739,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_FOCUS_DINO
   guid: 0241fcd3e76dfb4680772d57da889966
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -727,7 +761,7 @@ MonoBehaviour:
   Path: event:/GGJ_2018_DEATH_PLAYER
   guid: aa2b50f60f7d064788b12ca9792652f0
   Banks:
-  - {fileID: 114854690156325294}
+  - {fileID: 114872397982948516}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1

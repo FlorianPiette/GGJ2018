@@ -8,7 +8,7 @@ public class CollectibleSpawner : MonoBehaviour {
 
 	void Start () {
 		_createCollectible = false;
-		StartCoroutine (DelayCreateStamina());
+		//StartCoroutine (DelayCreateStamina());
 	}
 
 	public void CreateStamina ()

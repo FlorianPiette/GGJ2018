@@ -91,21 +91,14 @@ public class PlayerController : MonoBehaviour {
 				transform.rotation = Quaternion.LookRotation(_velocity);
 			}
 
-			if(_sprintSpeed != 0) {
-				_animator.SetBool("Boost", false);
-				_animator.SetBool("Sprint", true);
-				_animator.SetBool("Run", false);
-			} else if(_boostSpeed != 0) {
-				_animator.SetBool("Boost", true);
-				_animator.SetBool("Sprint", false);
-				_animator.SetBool("Run", false);
-			} else if(_velocity == Vector3.zero) {
-				_animator.SetBool("Boost", false);
-				_animator.SetBool("Sprint", false);
+			//if(_sprintSpeed != 0) {
+			//	_animator.SetBool("Run", false);
+			//} else if(_boostSpeed != 0) {
+			//	_animator.SetBool("Run", false);
+			//} else 
+			if(_velocity == Vector3.zero) {
 				_animator.SetBool("Run", false);
 			} else {
-				_animator.SetBool("Boost", false);
-				_animator.SetBool("Sprint", false);
 				_animator.SetBool("Run", true);
 			}
 
@@ -113,11 +106,12 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		//if(other.tag == (Tags._collectible)) {
-		////met un int en plus
-		//	_stamina += 10;
-		//	Destroy(other.gameObject);
-		//}
+		if(other.tag == (Tags._collectible)) {
+			//met un int en plus
+			_stamina += 10;
+			SpawnArea.Instance.nbCollect -= 1;
+			Destroy(other.gameObject);
+		}
 
 		// touch Ship pieces
 		if(other.tag == (Tags._shipPiece)) {
@@ -125,13 +119,10 @@ public class PlayerController : MonoBehaviour {
 			Destroy(other.gameObject);
         }
 
-        Debug.Log(name + "  + " + other.name);
-
         if (other.tag == (Tags._ship)) {
 			if (_shipPiecesNumber !=0){
 				_shipPiecesNumber -= 1;
-
-                Debug.Log("TADADADA" + name + "  + " + other.name);
+               
                 GameManager.Instance.AddShipPiece();
 		    }
 		}
@@ -143,8 +134,9 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if(other.gameObject.tag == (Tags._dino)) {
-			gameObject.SetActive(false);
+			GameManager.Instance.EndOfGame();
 			GameManager.Instance._players.RemoveAt(_playerIndex - 1);
+			gameObject.SetActive(false);
 		}
 	}
 
@@ -154,13 +146,13 @@ public class PlayerController : MonoBehaviour {
 				Destroy(other.gameObject);
 			}
 		}
-		if(other.gameObject.tag == (Tags._collectible)) {
-			//met un int en plus
-			if(Input.GetButtonDown("J" + _playerIndex + "Bbutton")) {
-				canTakeOrbe = true;
-				StartCoroutine(TakeOrbe(other.gameObject));
-			}
-		}
+		//if(other.gameObject.tag == (Tags._collectible)) {
+		//	//met un int en plus
+		//	if(Input.GetButtonDown("J" + _playerIndex + "Bbutton")) {
+		//		canTakeOrbe = true;
+		//		StartCoroutine(TakeOrbe(other.gameObject));
+		//	}
+		//}
 	}
 
 	IEnumerator TakeOrbe(GameObject p_go) {
@@ -168,6 +160,7 @@ public class PlayerController : MonoBehaviour {
 		Debug.Log("Destroy" + canTakeOrbe);
 		if (canTakeOrbe) {
 			_stamina += 10;
+			SpawnArea.Instance.nbCollect -= 1;
 			Destroy(p_go);
 		}
 

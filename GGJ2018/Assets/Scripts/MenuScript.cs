@@ -17,9 +17,13 @@ public class MenuScript : MonoBehaviour
     Text StartInText;
 
     [FMODUnity.EventRef]
-    public string threeTwoOne_sfx = "event:/GGJ_2018_3_2_1";
+    private string threeTwoOne_sfx = "event:/GGJ_2018_3_2_1";
     [FMODUnity.EventRef]
-    public string addPlayer_sfx = "event:/GGJ_2018_ADD_PLAYER";
+    private string addPlayer_sfx = "event:/GGJ_2018_ADD_PLAYER";
+	[FMODUnity.EventRef]
+	private string pressStart_sfx = "event:/GGJ_2018_START";
+
+
 
     bool PlayerOneIsReady = false;
     bool PlayerTwoIsReady = false;
@@ -38,6 +42,7 @@ public class MenuScript : MonoBehaviour
             PlayerOneIsReady = true;
             PressAToJoinPlayer1.text = "Ready!";
             AddingPlayer();
+			FMODUnity.RuntimeManager.PlayOneShot(addPlayer_sfx, Vector3.zero);
         }
 
         if (Input.GetButtonDown("J2Abutton") && !PlayerTwoIsReady)
@@ -45,6 +50,7 @@ public class MenuScript : MonoBehaviour
             PlayerTwoIsReady = true;
             PressAToJoinPlayer2.text = "Ready!";
             AddingPlayer();
+			FMODUnity.RuntimeManager.PlayOneShot(addPlayer_sfx, Vector3.zero);
         }
 
         if (Input.GetButtonDown("J3Abutton") && !PlayerThreeIsReady)
@@ -52,6 +58,7 @@ public class MenuScript : MonoBehaviour
             PlayerThreeIsReady = true;
             PressAToJoinPlayer3.text = "Ready!";
             AddingPlayer();
+			FMODUnity.RuntimeManager.PlayOneShot(addPlayer_sfx, Vector3.zero);
         }
 
         if (Input.GetButtonDown("J4Abutton") && !PlayerFourIsReady)
@@ -59,12 +66,14 @@ public class MenuScript : MonoBehaviour
             PlayerFourIsReady = true;
             PressAToJoinPlayer4.text = "Ready!";
             AddingPlayer();
+			FMODUnity.RuntimeManager.PlayOneShot(addPlayer_sfx, Vector3.zero);
         }
 
         if (Input.GetButtonDown("StartAnyController") && !PressedStart)
         {
             PressedStart = true;
-            FMODUnity.RuntimeManager.PlayOneShot(threeTwoOne_sfx, Vector3.zero);
+			FMODUnity.RuntimeManager.PlayOneShot(pressStart_sfx, Vector3.zero);
+         	FMODUnity.RuntimeManager.PlayOneShot(threeTwoOne_sfx, Vector3.zero);
         }
 
 
