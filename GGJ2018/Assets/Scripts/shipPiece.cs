@@ -10,7 +10,7 @@ public class shipPiece : MonoBehaviour {
 	}
 	
 	IEnumerator lifeTime (){
-		yield return new WaitForSeconds (7f);
+		yield return new WaitForSeconds (Random.Range(7.0f, 12.0f));
 		Destroy (gameObject);
 	}
 }

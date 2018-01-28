@@ -106,11 +106,12 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		//if(other.tag == (Tags._collectible)) {
-		////met un int en plus
-		//	_stamina += 10;
-		//	Destroy(other.gameObject);
-		//}
+		if(other.tag == (Tags._collectible)) {
+			//met un int en plus
+			_stamina += 10;
+			SpawnArea.Instance.nbCollect -= 1;
+			Destroy(other.gameObject);
+		}
 
 		// touch Ship pieces
 		if(other.tag == (Tags._shipPiece)) {
@@ -145,13 +146,13 @@ public class PlayerController : MonoBehaviour {
 				Destroy(other.gameObject);
 			}
 		}
-		if(other.gameObject.tag == (Tags._collectible)) {
-			//met un int en plus
-			if(Input.GetButtonDown("J" + _playerIndex + "Bbutton")) {
-				canTakeOrbe = true;
-				StartCoroutine(TakeOrbe(other.gameObject));
-			}
-		}
+		//if(other.gameObject.tag == (Tags._collectible)) {
+		//	//met un int en plus
+		//	if(Input.GetButtonDown("J" + _playerIndex + "Bbutton")) {
+		//		canTakeOrbe = true;
+		//		StartCoroutine(TakeOrbe(other.gameObject));
+		//	}
+		//}
 	}
 
 	IEnumerator TakeOrbe(GameObject p_go) {
@@ -159,6 +160,7 @@ public class PlayerController : MonoBehaviour {
 		Debug.Log("Destroy" + canTakeOrbe);
 		if (canTakeOrbe) {
 			_stamina += 10;
+			SpawnArea.Instance.nbCollect -= 1;
 			Destroy(p_go);
 		}
 

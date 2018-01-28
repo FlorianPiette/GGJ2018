@@ -14,7 +14,8 @@ public class Collectible : MonoBehaviour {
 		
 	}
 	IEnumerator lifeTime (){
-		yield return new WaitForSeconds (8f);
+		yield return new WaitForSeconds (Random.Range(4.0f, 8.0f));
+		SpawnArea.Instance.nbCollect -= 1;
 		Destroy (gameObject);
 	}
 }
