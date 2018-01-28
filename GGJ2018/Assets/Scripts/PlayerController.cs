@@ -125,13 +125,10 @@ public class PlayerController : MonoBehaviour {
 			Destroy(other.gameObject);
         }
 
-        Debug.Log(name + "  + " + other.name);
-
         if (other.tag == (Tags._ship)) {
 			if (_shipPiecesNumber !=0){
 				_shipPiecesNumber -= 1;
-
-                Debug.Log("TADADADA" + name + "  + " + other.name);
+               
                 GameManager.Instance.AddShipPiece();
 		    }
 		}

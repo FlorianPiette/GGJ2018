@@ -1160,25 +1160,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114407566507600172, guid: 11f9c06824bbd4b42bb292d3b93214e3,
-        type: 2}
-      propertyPath: ChargeSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114407566507600172, guid: 11f9c06824bbd4b42bb292d3b93214e3,
-        type: 2}
-      propertyPath: WaitTime
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4086351609808318, guid: 11f9c06824bbd4b42bb292d3b93214e3, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -128.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 137248085504025468, guid: 11f9c06824bbd4b42bb292d3b93214e3,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a23eaea38a5336e40a4625c8c82f4780, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11f9c06824bbd4b42bb292d3b93214e3, type: 2}
   m_IsPrefabParent: 0

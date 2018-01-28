@@ -13,7 +13,7 @@ public class DinoChargeTest : MonoBehaviour {
 
     public Rigidbody Rigid;
 	public GameObject ObjectToFollow;
-	[Range (0, 10.0f)]
+	[Range (0, 50.0f)]
 	public float FollowSpeed;
 	public float ChargeSpeed;
 	private Vector3 Direction;
@@ -37,12 +37,16 @@ public class DinoChargeTest : MonoBehaviour {
 		
 		if (ObjectToFollow == null || ObjectToFollow.activeSelf == false)
 			SelectNextTarget ();
-		else {
-			if (!CanCharge && !isPreparingCharge) {
+		else
+        {
+			if (!CanCharge && !isPreparingCharge)
+            {
 				StartCoroutine (TimeToWait ());
                 isPreparingCharge = true;
-                Rigid.transform.LookAt (ObjectToFollow.transform.position);
-			}
+			} else if (isPreparingCharge)
+            {
+                Rigid.transform.LookAt(ObjectToFollow.transform.position);
+            }
 
 			Charge ();
 		}	
@@ -84,7 +88,7 @@ public class DinoChargeTest : MonoBehaviour {
         {
             FMODUnity.RuntimeManager.PlayOneShot(dashDino, Vector3.zero);
             canPlayDashSound = false;
-            Debug.Log("Test");
+
         }
 
         //Look At Follow Rotate to follow (dont care of rigidbody constraint
